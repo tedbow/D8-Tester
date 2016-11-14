@@ -30,14 +30,18 @@ class ModalController extends ControllerBase {
         ],
         '#attached' => [
           'library' => [
-            'outside_in/drupal.outside_in',
+            'core/drupal.dialog.ajax',
           ],
         ],
       ],
     ];
   }
 
-
+  /**
+   * Callback to show in modal.
+   *
+   * @return array
+   */
   public function modalCallback() {
     return [
       '#type' => 'markup',
