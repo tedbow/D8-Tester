@@ -1,0 +1,23 @@
+
+tester.default_controller_message:
+  path: '/tester-message'
+  defaults:
+    _controller: '\Drupal\tester\Controller\DefaultController::message'
+    _title: 'Message'
+  requirements:
+    _permission: 'access content'
+
+tester.modal_controller_modallink:
+  path: 'tester-modal-link'
+  defaults:
+    _controller: '\Drupal\tester\Controller\ModalController::modalLink'
+    _title: 'Modal Test'
+  requirements:
+    _permission: 'access content'
+tester.modal_controller_modalcallback:
+  path: 'tester-modal-callback'
+  defaults:
+    _controller: '\Drupal\tester\Controller\ModalController::modalCallback'
+    _title: 'Modal Test'
+  requirements:
+    _permission: 'access content'
