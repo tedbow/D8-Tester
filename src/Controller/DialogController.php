@@ -6,11 +6,11 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
 
 /**
- * Class ModalController.
+ * Class DialogController.
  *
  * @package Drupal\tester\Controller
  */
-class ModalController extends ControllerBase {
+class DialogController extends ControllerBase {
 
   /**
    * Modalopen.
@@ -21,9 +21,23 @@ class ModalController extends ControllerBase {
   public function modalLink() {
     return [
       'modal_link' => [
-        '#title' => 'Click Me!',
+        '#title' => 'Click Me Modal!',
         '#type' => 'link',
-        '#url' => Url::fromRoute('tester.modal_controller_modalcallback'),
+        '#url' => Url::fromRoute('tester.dialog_callback'),
+        '#attributes' => [
+          'class' => ['use-ajax'],
+          'data-dialog-type' => 'modal',
+        ],
+        '#attached' => [
+          'library' => [
+            'core/drupal.dialog.ajax',
+          ],
+        ],
+      ],
+      'dialog_link' => [
+        '#title' => 'Click Me Dialog!',
+        '#type' => 'link',
+        '#url' => Url::fromRoute('tester.dialog_callback'),
         '#attributes' => [
           'class' => ['use-ajax'],
           'data-dialog-type' => 'dialog',

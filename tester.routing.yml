@@ -10,14 +10,22 @@ tester.default_controller_message:
 tester.modal_controller_modallink:
   path: 'tester-modal-link'
   defaults:
-    _controller: '\Drupal\tester\Controller\ModalController::modalLink'
+    _controller: '\Drupal\tester\Controller\DialogController::modalLink'
     _title: 'Modal Test'
   requirements:
     _permission: 'access content'
-tester.modal_controller_modalcallback:
+tester.dialog_callback:
   path: 'tester-modal-callback'
   defaults:
-    _controller: '\Drupal\tester\Controller\ModalController::modalCallback'
+    _controller: '\Drupal\tester\Controller\DialogController::modalCallback'
     _title: 'Modal Test'
+  requirements:
+    _permission: 'access content'
+
+tester.render_controller_renderArrays:
+  path: '/tester-render-array'
+  defaults:
+    _controller: '\Drupal\tester\Controller\RenderController::renderArrays'
+    _title: 'Test Render Array'
   requirements:
     _permission: 'access content'
