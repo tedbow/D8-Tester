@@ -29,3 +29,11 @@ tester.render_controller_renderArrays:
     _title: 'Test Render Array'
   requirements:
     _permission: 'access content'
+
+tester.simple_form:
+  path: '/tester/form/simple'
+  defaults:
+    _form: '\Drupal\tester\Form\SimpleForm'
+    _title: 'SimpleForm'
+  requirements:
+    _access: 'TRUE'

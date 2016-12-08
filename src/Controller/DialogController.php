@@ -47,6 +47,20 @@ class DialogController extends ControllerBase {
             'core/drupal.dialog.ajax',
           ],
         ],
+        'dialog_form_link' => [
+          '#title' => 'Click Me Dialog Form!',
+          '#type' => 'link',
+          '#url' => Url::fromRoute('tester.simple_form'),
+          '#attributes' => [
+            'class' => ['use-ajax'],
+            'data-dialog-type' => 'dialog',
+          ],
+          '#attached' => [
+            'library' => [
+              'core/drupal.dialog.ajax',
+            ],
+          ],
+        ],
       ],
     ];
   }
@@ -57,6 +71,8 @@ class DialogController extends ControllerBase {
    * @return array
    */
   public function modalCallback() {
+    // Confirm doesn't work with dialogs
+    drupal_set_message("Can you see me?");
     return [
       '#type' => 'markup',
       '#markup' => '<h2>Callback</h2>',
