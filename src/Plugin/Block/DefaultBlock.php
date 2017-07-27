@@ -20,7 +20,10 @@ class DefaultBlock extends BlockBase {
   public function build() {
     $build = [];
     $build['default_block']['#markup'] = 'Implement DefaultBlock.';
+    $build['default_block']['#attached']['library'][] = 'core/drupal.dialog.off_canvas';
     $build['default_block']['#attached']['library'][] = 'outside_in/drupal.off_canvas';
+    $build['default_block']['#attached']['library'][] = 'core/drupal.dialog';
+    $build['default_block']['#attached']['library'][] = 'core/drupal.tableheader';
     return $build;
   }
 

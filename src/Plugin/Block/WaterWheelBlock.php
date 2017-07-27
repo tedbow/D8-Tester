@@ -21,6 +21,7 @@ class WaterWheelBlock extends BlockBase {
     $build = [];
     $build['default_block']['#markup'] = 'waterwheel included.';
     $build['default_block']['#attached']['library'][] = 'waterwheel/waterwheel';
+
     return $build;
   }
 

@@ -40,6 +40,7 @@ class SimpleForm extends FormBase {
         '#type' => 'submit',
         '#value' => t('Submit'),
     ];
+    $form['submit']['#attributes']['class'][] = 'use-ajax-submit';
 
     return $form;
   }
@@ -49,7 +50,7 @@ class SimpleForm extends FormBase {
     */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
-    $form_state->setErrorByName('test_field', $this->t("I don't know what @input is.", ['@input' => $form_state->getValue('test_field')]));
+    //$form_state->setErrorByName('test_field', $this->t("I don't know what @input is.", ['@input' => $form_state->getValue('test_field')]));
   }
 
   /**
@@ -62,5 +63,6 @@ class SimpleForm extends FormBase {
     }
 
   }
+
 
 }

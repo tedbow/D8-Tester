@@ -2,6 +2,7 @@
 
 namespace Drupal\tester\Controller;
 
+use Drupal\Component\Serialization\Json;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
 
@@ -27,6 +28,7 @@ class DialogController extends ControllerBase {
         '#attributes' => [
           'class' => ['use-ajax'],
           'data-dialog-type' => 'modal',
+          'data-dialog-options' => Json::encode(['minHeight' => 400, 'dialogClass' => 'other-class']),
         ],
         '#attached' => [
           'library' => [
@@ -54,6 +56,19 @@ class DialogController extends ControllerBase {
           '#attributes' => [
             'class' => ['use-ajax'],
             'data-dialog-type' => 'dialog',
+          ],
+          '#attached' => [
+            'library' => [
+              'core/drupal.dialog.ajax',
+            ],
+          ],
+        ],
+        'ajax_link' => [
+          '#title' => 'Click Link Ajax!',
+          '#type' => 'link',
+          '#url' => Url::fromRoute('tester.default_controller_message'),
+          '#attributes' => [
+            'class' => ['use-ajax'],
           ],
           '#attached' => [
             'library' => [

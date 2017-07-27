@@ -18,7 +18,8 @@ class DefaultController extends ControllerBase {
    *   Return Hello string.
    */
   public function message() {
-    drupal_set_message('bo bo');
+    //drupal_set_message('bo bo');
+    debug(\Drupal::entityTypeManager()->getDefinition('block')->getFormClass('off_canvas'));
     return [
       '#type' => 'markup',
       '#markup' => $this->t('Implement method: message')

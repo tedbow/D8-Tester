@@ -1,4 +1,3 @@
-
 tester.default_controller_message:
   path: '/tester-message'
   defaults:
@@ -37,3 +36,13 @@ tester.simple_form:
     _title: 'SimpleForm'
   requirements:
     _access: 'TRUE'
+
+
+
+tester.j_s_message_controller_message:
+  path: '/tester/message'
+  defaults:
+    _controller: '\Drupal\tester\Controller\JSMessageController::message'
+    _title: 'JS Message'
+  requirements:
+    _permission: 'access content'
