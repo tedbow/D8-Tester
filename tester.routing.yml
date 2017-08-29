@@ -46,3 +46,12 @@ tester.j_s_message_controller_message:
     _title: 'JS Message'
   requirements:
     _permission: 'access content'
+
+
+tester.count:
+  path: 'test-count'
+  defaults:
+    _controller: '\Drupal\tester\Controller\DefaultController::testCount'
+    _title: 'Maker'
+  requirements:
+    _permission: 'access content'
