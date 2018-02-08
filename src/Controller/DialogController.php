@@ -16,8 +16,8 @@ class DialogController extends ControllerBase {
   /**
    * Modalopen.
    *
-   * @return string
-   *   Return Hello string.
+   * @return array
+   *   Modal links render array.
    */
   public function modalLink() {
     return [
@@ -29,6 +29,21 @@ class DialogController extends ControllerBase {
           'class' => ['use-ajax'],
           'data-dialog-type' => 'modal',
           'data-dialog-options' => Json::encode(['minHeight' => 400, 'dialogClass' => 'other-class']),
+        ],
+        '#attached' => [
+          'library' => [
+            'core/drupal.dialog.ajax',
+          ],
+        ],
+      ],
+      'modal_link_800' => [
+        '#title' => 'Click Me Modal - 800 width!',
+        '#type' => 'link',
+        '#url' => Url::fromRoute('tester.dialog_callback'),
+        '#attributes' => [
+          'class' => ['use-ajax'],
+          'data-dialog-type' => 'modal',
+          'data-dialog-options' => Json::encode(['minHeight' => 400, 'dialogClass' => 'other-class', 'width' => '800px']),
         ],
         '#attached' => [
           'library' => [
@@ -49,31 +64,46 @@ class DialogController extends ControllerBase {
             'core/drupal.dialog.ajax',
           ],
         ],
-        'dialog_form_link' => [
-          '#title' => 'Click Me Dialog Form!',
-          '#type' => 'link',
-          '#url' => Url::fromRoute('tester.simple_form'),
-          '#attributes' => [
-            'class' => ['use-ajax'],
-            'data-dialog-type' => 'dialog',
-          ],
-          '#attached' => [
-            'library' => [
-              'core/drupal.dialog.ajax',
-            ],
+      ],
+      'dialog_link_800' => [
+        '#title' => 'Click Me Dialog- 800 width!',
+        '#type' => 'link',
+        '#url' => Url::fromRoute('tester.dialog_callback'),
+        '#attributes' => [
+          'class' => ['use-ajax'],
+          'data-dialog-type' => 'dialog',
+          'data-dialog-options' => Json::encode(['minHeight' => 400, 'dialogClass' => 'other-class', 'width' => '800px']),
+        ],
+        '#attached' => [
+          'library' => [
+            'core/drupal.dialog.ajax',
           ],
         ],
-        'ajax_link' => [
-          '#title' => 'Click Link Ajax!',
-          '#type' => 'link',
-          '#url' => Url::fromRoute('tester.default_controller_message'),
-          '#attributes' => [
-            'class' => ['use-ajax'],
+      ],
+      'dialog_form_link' => [
+        '#title' => 'Click Me Dialog Form!',
+        '#type' => 'link',
+        '#url' => Url::fromRoute('tester.simple_form'),
+        '#attributes' => [
+          'class' => ['use-ajax'],
+          'data-dialog-type' => 'dialog',
+        ],
+        '#attached' => [
+          'library' => [
+            'core/drupal.dialog.ajax',
           ],
-          '#attached' => [
-            'library' => [
-              'core/drupal.dialog.ajax',
-            ],
+        ],
+      ],
+      'ajax_link' => [
+        '#title' => 'Click Link Ajax!',
+        '#type' => 'link',
+        '#url' => Url::fromRoute('tester.default_controller_message'),
+        '#attributes' => [
+          'class' => ['use-ajax'],
+        ],
+        '#attached' => [
+          'library' => [
+            'core/drupal.dialog.ajax',
           ],
         ],
       ],
