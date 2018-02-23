@@ -1,5 +1,5 @@
 name: tester
 type: module
-description: My Awesome Module
+description: A tester module for Drupal 8
 core: 8.x
 package: Custom
