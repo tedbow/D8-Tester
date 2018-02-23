@@ -40,7 +40,7 @@ class SimpleForm extends FormBase {
         '#type' => 'submit',
         '#value' => t('Submit'),
     ];
-    $form['submit']['#attributes']['class'][] = 'use-ajax-submit';
+    //$form['submit']['#attributes']['class'][] = 'use-ajax-submit';
 
     return $form;
   }

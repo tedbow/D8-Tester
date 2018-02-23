@@ -94,6 +94,21 @@ class DialogController extends ControllerBase {
           ],
         ],
       ],
+      'off_canvas_form' => [
+        '#title' => 'Open the form!',
+        '#type' => 'link',
+        '#url' => Url::fromRoute('tester.simple_form')->setOption('query', \Drupal::destination()->getAsArray()),
+        '#attributes' => [
+          'class' => ['use-ajax'],
+          'data-dialog-type' => 'dialog',
+          'data-dialog-renderer' => 'off_canvas',
+        ],
+        '#attached' => [
+          'library' => [
+            'core/drupal.dialog.ajax',
+          ],
+        ],
+      ],
       'ajax_link' => [
         '#title' => 'Click Link Ajax!',
         '#type' => 'link',
