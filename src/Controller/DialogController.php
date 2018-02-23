@@ -4,6 +4,7 @@ namespace Drupal\tester\Controller;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
@@ -20,79 +21,37 @@ class DialogController extends ControllerBase {
    *   Modal links render array.
    */
   public function modalLink() {
+
+    $modal_link = Link::createFromRoute('From object', 'tester.simple_form')->openInDialog();
+    $modal_link->getUrl()->setOption('attributes', ['class' => ['my-class'], 'data-boo' => 'boo', 'data-dialog-type' => 'dialog']);
+
+    $offLink = Link::createFromRoute('From object off2', 'tester.simple_form');
+    $offLink->getUrl()->openInDialog('dialog', 'off_canvas');
     return [
       'modal_link' => [
         '#title' => 'Click Me Modal!',
         '#type' => 'link',
-        '#url' => Url::fromRoute('tester.dialog_callback'),
-        '#attributes' => [
-          'class' => ['use-ajax'],
-          'data-dialog-type' => 'modal',
-          'data-dialog-options' => Json::encode(['minHeight' => 400, 'dialogClass' => 'other-class']),
-        ],
-        '#attached' => [
-          'library' => [
-            'core/drupal.dialog.ajax',
-          ],
-        ],
+        '#url' => Url::fromRoute('tester.dialog_callback')->openInDialog('modal', NULL, ['minHeight' => 400, 'dialogClass' => 'other-class']),
       ],
       'modal_link_800' => [
         '#title' => 'Click Me Modal - 800 width!',
         '#type' => 'link',
-        '#url' => Url::fromRoute('tester.dialog_callback'),
-        '#attributes' => [
-          'class' => ['use-ajax'],
-          'data-dialog-type' => 'modal',
-          'data-dialog-options' => Json::encode(['minHeight' => 400, 'dialogClass' => 'other-class', 'width' => '800px']),
-        ],
-        '#attached' => [
-          'library' => [
-            'core/drupal.dialog.ajax',
-          ],
-        ],
+        '#url' => Url::fromRoute('tester.dialog_callback')->openInDialog('modal', NULL, ['minHeight' => 400, 'dialogClass' => 'other-class', 'width' => '800px']),
       ],
       'dialog_link' => [
         '#title' => 'Click Me Dialog!',
         '#type' => 'link',
-        '#url' => Url::fromRoute('tester.dialog_callback'),
-        '#attributes' => [
-          'class' => ['use-ajax'],
-          'data-dialog-type' => 'dialog',
-        ],
-        '#attached' => [
-          'library' => [
-            'core/drupal.dialog.ajax',
-          ],
-        ],
+        '#url' => Url::fromRoute('tester.dialog_callback')->openInDialog('dialog'),
       ],
       'dialog_link_800' => [
         '#title' => 'Click Me Dialog- 800 width!',
         '#type' => 'link',
-        '#url' => Url::fromRoute('tester.dialog_callback'),
-        '#attributes' => [
-          'class' => ['use-ajax'],
-          'data-dialog-type' => 'dialog',
-          'data-dialog-options' => Json::encode(['minHeight' => 400, 'dialogClass' => 'other-class', 'width' => '800px']),
-        ],
-        '#attached' => [
-          'library' => [
-            'core/drupal.dialog.ajax',
-          ],
-        ],
+        '#url' => Url::fromRoute('tester.dialog_callback')->openInDialog('dialog', NULL, ['minHeight' => 400, 'dialogClass' => 'other-class', 'width' => '800px']),
       ],
       'dialog_form_link' => [
         '#title' => 'Click Me Dialog Form!',
         '#type' => 'link',
-        '#url' => Url::fromRoute('tester.simple_form'),
-        '#attributes' => [
-          'class' => ['use-ajax'],
-          'data-dialog-type' => 'dialog',
-        ],
-        '#attached' => [
-          'library' => [
-            'core/drupal.dialog.ajax',
-          ],
-        ],
+        '#url' => Url::fromRoute('tester.simple_form')->setOption('query', \Drupal::destination()->getAsArray())->openInDialog('dialog', 'off_canvas'),
       ],
       'ajax_link' => [
         '#title' => 'Click Link Ajax!',
@@ -107,6 +66,8 @@ class DialogController extends ControllerBase {
           ],
         ],
       ],
+      'from_object' => $modal_link->toRenderable(),
+      'from_object_off' => $offLink->toRenderable(),
     ];
   }
 

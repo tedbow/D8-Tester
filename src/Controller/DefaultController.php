@@ -23,7 +23,7 @@ class DefaultController extends ControllerBase {
     debug(\Drupal::entityTypeManager()->getDefinition('block')->getFormClass('off_canvas'));
     return [
       '#type' => 'markup',
-      '#markup' => $this->t('Implement method: message')
+      '#markup' => $this->t('Implement methodd  : message')
     ];
   }
 
