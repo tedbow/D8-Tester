@@ -4,6 +4,7 @@ namespace Drupal\tester\Controller;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
@@ -20,6 +21,53 @@ class DialogController extends ControllerBase {
    *   Modal links render array.
    */
   public function modalLink() {
+    $album = 'aaa';
+    $image = "iii";
+
+    $elements['link'] = [
+      '#title' => 'Edit image',
+      '#type' => 'link',
+      '#url' => Url::fromRoute('album_image', [
+        'album' => $album,
+        'image' => $image,
+      ],
+        [
+          'query' => \Drupal::service('redirect.destination')
+            ->getAsArray(),
+        ]),
+      '#attributes' => [
+        'class' => ['use-ajax'],
+        'data-dialog-type' => 'dialog',
+        'data-dialog-renderer' => 'off_canvas',
+      ],
+      '#attached' => [
+        'library' => [
+          'core/drupal.dialog.ajax',
+        ],
+      ],
+    ];
+    return $elements;
+
+/*    return [
+      '#markup' => 'boo',
+    ];*/
+    $link = Link::createFromRoute('Open the form', 'tester.simple_form');
+    $link->getUrl()->setOptions(
+      [
+        'query' => \Drupal::destination()->getAsArray(),
+        'attributes' => [
+          'class' => ['use-ajax'],
+          'data-dialog-type' => 'dialog',
+          'data-dialog-renderer' => 'off_canvas',
+        ],
+        '#attached' => [
+          'library' => [
+            'core/drupal.dialog.ajax',
+          ],
+        ],
+      ]
+    );
+    return $link->toRenderable();
     return [
       'modal_link' => [
         '#title' => 'Click Me Modal!',
@@ -123,6 +171,24 @@ class DialogController extends ControllerBase {
         ],
       ],
     ];
+
+    $elements['link'] = [
+      '#title' => 'Open the form!',
+      '#type' => 'link',
+      '#url' => Url::fromRoute('tester.simple_form')
+        ->setOption('query', \Drupal::destination()->getAsArray()),
+      '#attributes' => [
+        'class' => ['use-ajax'],
+        'data-dialog-type' => 'dialog',
+        'data-dialog-renderer' => 'off_canvas',
+      ],
+      '#attached' => [
+        'library' => [
+          'core/drupal.dialog.ajax',
+        ],
+      ],
+    ];
+
   }
 
   /**
@@ -138,4 +204,13 @@ class DialogController extends ControllerBase {
       '#markup' => '<h2>Callback</h2>',
     ];
   }
+
+  public function albumTest($album, $image) {
+    return [
+      '#type' => 'markup',
+      '#markup' => "<h2>$album - $image</h2>",
+    ];
+  }
+
+
 }

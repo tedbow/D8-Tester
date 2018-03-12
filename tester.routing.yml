@@ -55,3 +55,11 @@ tester.count:
     _title: 'Maker'
   requirements:
     _permission: 'access content'
+
+album_image:
+  path: 'test-album/{album}/{image}'
+  defaults:
+    _controller: '\Drupal\tester\Controller\DialogController::albumTest'
+    _title: 'yes'
+  requirements:
+      _permission: 'access content'
