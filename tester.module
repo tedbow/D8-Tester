@@ -22,7 +22,3 @@ function tester_help($route_name, RouteMatchInterface $route_match) {
     default:
   }
 }
-
-function tester_page_top(array &$page_top) {
-  //drupal_set_message("what up?");
-}

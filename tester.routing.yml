@@ -1,65 +1,14 @@
-tester.default_controller_message:
-  path: '/tester-message'
-  defaults:
-    _controller: '\Drupal\tester\Controller\DefaultController::message'
-    _title: 'Message'
-  requirements:
-    _permission: 'access content'
-
 tester.modal_controller_modallink:
   path: 'tester-modal-link'
   defaults:
-    _controller: '\Drupal\tester\Controller\DialogController::modalLink'
-    _title: 'Modal Test'
+    _controller: '\Drupal\tester\Controller\DialogController::offCanvasLink'
+    _title: 'Off-canvas Test'
   requirements:
     _permission: 'access content'
-tester.dialog_callback:
-  path: 'tester-modal-callback'
-  defaults:
-    _controller: '\Drupal\tester\Controller\DialogController::modalCallback'
-    _title: 'Modal Test'
-  requirements:
-    _permission: 'access content'
-
-tester.render_controller_renderArrays:
-  path: '/tester-render-array'
-  defaults:
-    _controller: '\Drupal\tester\Controller\RenderController::renderArrays'
-    _title: 'Test Render Array'
-  requirements:
-    _permission: 'access content'
-
-tester.simple_form:
-  path: '/tester/form/simple'
-  defaults:
-    _form: '\Drupal\tester\Form\SimpleForm'
-    _title: 'SimpleForm'
-  requirements:
-    _access: 'TRUE'
-
-
-
-tester.j_s_message_controller_message:
-  path: '/tester/message'
-  defaults:
-    _controller: '\Drupal\tester\Controller\JSMessageController::message'
-    _title: 'JS Message'
-  requirements:
-    _permission: 'access content'
-
-
-tester.count:
-  path: 'test-count'
-  defaults:
-    _controller: '\Drupal\tester\Controller\DefaultController::testCount'
-    _title: 'Maker'
-  requirements:
-    _permission: 'access content'
-
 album_image:
   path: 'test-album/{album}/{image}'
   defaults:
     _controller: '\Drupal\tester\Controller\DialogController::albumTest'
-    _title: 'yes'
+    _title: 'Off-canvas Test'
   requirements:
       _permission: 'access content'

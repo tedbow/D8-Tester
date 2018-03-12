@@ -1,9 +1,0 @@
-drupal.tester_message:
-  version: VERSION
-  js:
-      js/message_test.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
-    - core/drupal.debounce
-    - core/drupal.message
