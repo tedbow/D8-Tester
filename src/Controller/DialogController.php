@@ -22,24 +22,24 @@ class DialogController extends ControllerBase {
     $album = 'aaa';
     $image = "iii";
 
-    $elements['link'] = [
-      '#title' => 'Edit image',
-      '#type' => 'link',
-      '#url' => Url::fromRoute('album_image', ['album' => $album, 'image' => $image],
-        [
-          'query' => \Drupal::service('redirect.destination')->getAsArray(),
-        ]),
-      '#attributes' => [
-        'class' => ['use-ajax'],
-        'data-dialog-type' => 'dialog',
-        'data-dialog-renderer' => 'off_canvas',
-      ],
-      '#attached' => [
-        'library' => [
-          'core/drupal.dialog.ajax',
-        ],
-      ],
-    ];
+$elements['link'] = [
+  '#title' => 'Edit image',
+  '#type' => 'link',
+  '#url' => Url::fromRoute('album_image', ['album' => $album_id, 'image' => $image_id],
+    [
+      'query' => \Drupal::service('redirect.destination')->getAsArray(),
+    ]),
+  '#attributes' => [
+    'class' => ['use-ajax'],
+    'data-dialog-type' => 'dialog',
+    'data-dialog-renderer' => 'off_canvas',
+  ],
+  '#attached' => [
+    'library' => [
+      'core/drupal.dialog.ajax',
+    ],
+  ],
+];
     return $elements;
   }
 
